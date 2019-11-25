@@ -8,32 +8,46 @@
 #ifndef FRIENDSHIPS_H
 #define FRIENDSHIPS_H
 
-#include <map>
-#include <memory>
+#include <vector>
 #include "Person.h"
 
 namespace codesmith {
 
+	/**
+	* A class to hold friend relations between two Persons
+	* Only Ids of persons are kept here
+	*/
 	class Friendships
 	{
-	public: // Construction and accessor
-		static Friendships& instance() {
-			static Friendships m_friendRelations;
-			return m_friendRelations;
-		}
+		// Simple class to hold a pair of person ids to indicate if they are friends
+		class FriendPair
+		{
+		public:
+			FriendPair(int id1, int id2) : m_id1(id1), m_id2(id2) { };
+			int m_id1;
+			int m_id2;
+		};
 
+	public: // Construction
 		Friendships() : m_friendRelations() {};
 		virtual ~Friendships() {};
 
 	public: // Operations
-		void add(std::shared_ptr<Person> p1, std::shared_ptr<Person> p2);
+		size_t size() { return m_friendRelations.size(); }
+		void clear() { m_friendRelations.clear(); }
+		void add(const Person& p1, const Person& p2);
+		void add(int p1_id, int p2_id);
 		bool areFriends(const Person& p1, const Person& p2) const;
+		bool areFriends(int p1_id, int p2_id) const;
 		void unfriend(const Person& p1, const Person& p2);
+		void unfriend(int p1_id, int p2_id);
+		std::vector<int> getFriends(const Person& person);
+		std::vector<int> getFriends(int id);
 	private: // Operations
-
+		std::vector<FriendPair>::iterator findFriendshipIterByPair(const FriendPair& pair);
 
 	private: // Data
-		std::map < std::shared_ptr<Person>, std::shared_ptr<Person> > m_friendRelations;
+		std::vector<FriendPair> m_friendRelations;
 	};
 }
 

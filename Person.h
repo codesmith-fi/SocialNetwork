@@ -56,6 +56,8 @@ namespace codesmith {
 
 		void addHobby(const Hobby& hobby);
 		void addHobby(const std::string& hobbyName);
+		void addHobbies(const std::vector<std::string> hobbyNames);
+
 		void removeHobby(const Hobby& hobby);
 		void removeHobby(const std::string& hobbyName);
 		bool hasHobby(const std::string& hobbyName);

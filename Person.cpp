@@ -34,6 +34,13 @@ void Person::addHobby(const std::string& hobbyName)
 	}
 }
 
+void Person::addHobbies(const std::vector<std::string> hobbyNames)
+{
+	for (auto n : hobbyNames) {
+		addHobby(n);
+	}
+}
+
 void Person::removeHobby(const std::string& hobbyName)
 {
 	Hobby tmp(hobbyName);

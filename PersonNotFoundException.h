@@ -23,7 +23,7 @@ namespace codesmith {
 			return msg.c_str();
 		}
 
-		int getRequestedId() { return m_requestedId; }
+		int getRequestedId() const { return m_requestedId; }
 
 	private: // data
 		int m_requestedId;

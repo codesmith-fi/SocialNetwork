@@ -1,7 +1,14 @@
 #include "SocialNetwork.h"
+#include "Friendships.h"
 #include "PersonNotFoundException.h"
 
 namespace codesmith {
+
+	void SocialNetwork::clear()
+	{
+		m_friendships.clear();
+		m_people.clear();
+	}
 
 	void SocialNetwork::addPerson(std::shared_ptr<Person> person)
 	{
@@ -20,7 +27,7 @@ namespace codesmith {
 		}
 	}
 
-	std::vector<std::shared_ptr<Person>> SocialNetwork::searchUserByAge(
+	std::vector<std::shared_ptr<Person>> SocialNetwork::searchPersonByAge(
 		int age)
 	{
 		std::vector<std::shared_ptr<Person>> result;
@@ -33,7 +40,7 @@ namespace codesmith {
 		return result;
 	}
 
-	std::vector<std::shared_ptr<Person>> SocialNetwork::searchUserByName(const std::string& name)
+	std::vector<std::shared_ptr<Person>> SocialNetwork::searchPersonByName(const std::string& name)
 	{
 		std::vector<std::shared_ptr<Person>> result;
 		for (auto it = m_people.begin(); it != m_people.end(); ++it) {
@@ -46,7 +53,7 @@ namespace codesmith {
 		return result;
 	}
 
-	std::vector<std::shared_ptr<Person>> SocialNetwork::searchUserByHobbies(const std::vector<Hobby>& hobbies)
+	std::vector<std::shared_ptr<Person>> SocialNetwork::searchPersonByHobbies(const std::vector<Hobby>& hobbies)
 	{
 		std::vector<std::shared_ptr<Person>> result;
 		for (auto it = m_people.begin(); it != m_people.end(); ++it) {
@@ -59,7 +66,7 @@ namespace codesmith {
 		return result;
 	}
 
-	std::vector<std::shared_ptr<Person>> SocialNetwork::searchUserByHobbies(const std::vector<std::string>& hobbyNames)
+	std::vector<std::shared_ptr<Person>> SocialNetwork::searchPersonByHobbies(const std::vector<std::string>& hobbyNames)
 	{
 		std::vector<std::shared_ptr<Person>> result;
 		for (auto it = m_people.begin(); it != m_people.end(); ++it) {
@@ -94,6 +101,11 @@ namespace codesmith {
 			}
 		}
 		return res;
+	}
+
+	std::vector<int> SocialNetwork::getFriendsOfPerson(const Person& person)
+	{
+		return m_friendships.getFriends(person);
 	}
 
 	std::vector<std::shared_ptr<Person>>::iterator SocialNetwork::findPersonIterById(int id)

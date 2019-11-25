@@ -9,6 +9,9 @@
 #define SOCIALNETWORKTESTER_H_
 
 #include <string>
+#include <memory>
+#include "Person.h"
+#include "SocialNetwork.h"
 
 namespace codesmith {
 
@@ -25,7 +28,7 @@ class SocialNetworkTester {
 		}
 
 	private: //
-		SocialNetworkTester() : m_testFailCount(0), m_testSuccessCount(0) { };
+		SocialNetworkTester() : m_testFailCount(0), m_testSuccessCount(0), m_network() { };
 
 	public: // helpers
 		int FailCount() { return m_testFailCount; };
@@ -54,16 +57,30 @@ class SocialNetworkTester {
 		void TestPersonHobbies();
 		void TestPersonPropertyGettersAndSetters();
 
+		// Friendships test cases
+		void TestFriendshipsNewInstance();
+		void TestFriendshipsClearAndSize();
+		void TestFriendshipsAddAndAreFriends();
+		void TestFriendshipsUnfriend();
+		void TestFriendshipsGetFriends();
+
 		// SocialNetwork test cases
 		void TestSocialNetworkNewInstance();
 		void TestSocialNetworkAddRemovePerson();
-		void TestSocialNetworkSearchUserByAge();
-		void TestSocialNetworkSearchUserByName();
-		void TestSocialNetworkSearchUserByHobbies();
+		void TestSocialNetworkSearchPersonByAge();
+		void TestSocialNetworkSearchPersonByName();
+		void TestSocialNetworkSearchPersonByHobbies();
+		void TestSocialNetworkManageFriendships();
 
+	private: // Setup methods for test cases
+		void setupSocialNetwork();
 	private: // Data
 		int m_testFailCount;
 		int m_testSuccessCount;
+
+		SocialNetwork m_network;
+		std::shared_ptr<Person> m_person1;
+		std::shared_ptr<Person> m_person2;
 };
 
 
