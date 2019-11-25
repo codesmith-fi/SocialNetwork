@@ -1,0 +1,57 @@
+Author: Erno Pakarinen (erpakari@gmail.com)
+Date: 25.11.2019
+
+A simple social network system with Unit tests. It has no real UI, 
+main.cpp just executes all test cases and prints results to stdout.
+
+UML class diagram can be found in "doc/design_02.xmi", it's done with
+open source UML modeler called Umbrello (available for Linux, Win 
+and Mac). A png-format image is also provided in "doc/design_02.png"
+
+The original timetable for this excercise was two hours. It took longer
+because I wanted to make comprehensive test cases for the system.
+The implementation of the actual SocialNetwork system took less but
+test cases made it to take longer than expected.
+
+Class descriptions:
+
+Hobby
+    Contains data and operations for a Hobby. Basically this contains only
+    one string (name) but I wanted to make it as a separate class instead
+    of just having a string data member in Person class.
+
+Person
+    Contains data and operations for a Person. Each Person has 
+        id
+        name
+        list of hobbies
+        gender
+        age
+        height
+    Hobbies can be added/removed and checked for.
+
+Friendships
+    Has all friend relations between two Persons. Holds only id's to Persons. 
+    A reason for having friendship relations in a separate class is that now
+    there is a single place where all relations are kept. If I would keep 
+    friend relations inside the person class I would have to update two Person
+    instances when friends are added. With this class the SocialNetwork 
+    manages all relations in one place which knows how to handle (add, 
+    remove, lookup) friendship relations.
+
+SocialNetwork
+    A class which knows all Persons in the system. Has operations to manage 
+    and search Persons with specific criteria. All friendships are managed 
+    by using the Friendships class owned by the SocialNetwork.
+
+SocialNetworkTester
+    Unit test for all classes in the system
+
+PersonNotFoundException
+    Exeption which is thrown in certain cases when looking for a specific person.
+
+DebugLogger
+    Simple logger for testing purposes
+
+Visual Studio 2019 project/solution is included in SocialNetwork.sln.
+
