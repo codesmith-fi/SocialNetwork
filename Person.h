@@ -10,6 +10,8 @@
 
 #include <vector>
 #include <string>
+#include <stdexcept>
+#include <iostream>
 #include "Hobby.h"
 
 namespace codesmith {
@@ -40,11 +42,15 @@ namespace codesmith {
 				PersonGender::Undefined) { };
 		Person(int id, const std::string& name) :
 			Person(id, name, AttributeUndefined, AttributeUndefined, PersonGender::Undefined) { };
-		Person(int id, const std::string& name, 
-			int age, int height, 
+		Person(int id, const std::string& name,
+			int age, int height,
 			const PersonGender& gender) :
-				m_id(id), m_name(name),
-				m_hobbies(), m_age(age), m_height(height), m_gender(gender) { };
+			m_id(id), m_name(name),
+			m_hobbies(), m_age(age), m_height(height), m_gender(gender) {
+				if (name.empty()) {
+					throw std::invalid_argument("Person name can't be empty");
+				}
+			}
 		virtual ~Person() { };
 
 	public: // Operations

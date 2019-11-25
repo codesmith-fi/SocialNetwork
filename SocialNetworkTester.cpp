@@ -166,6 +166,15 @@ void SocialNetworkTester::TestPersonNewInstance()
 	AssertCondition(p3.getHobbies().size() == 0, "Person p3 should have no hobbies");
 	AssertCondition(p3.getGender() == Person::PersonGender::Female, "Person p3 gender should be Female");
 
+	// Try creating a Person with no name
+	bool ex = false;
+	try {
+		Person p4("");
+	}
+	catch(std::invalid_argument& /* e */) {
+		ex = true;
+	}
+	AssertCondition(ex, "Exception should be thrown if given name is empty in construction");
 	LOG_INFO() << "TestPersonNewInstance() exit";
 }
 
@@ -480,8 +489,9 @@ void SocialNetworkTester::TestSocialNetworkManageFriendships()
 	LOG_INFO() << "TestSocialNetworkManageFriendships() enter";
 	SocialNetwork n;
 	for (int i = 0; i < 10; ++i) {
-		std::string name = "Person " + i;
-		std::shared_ptr<Person> person(new Person(name));
+		std::ostringstream buf;
+		buf << "Person " << i;
+		std::shared_ptr<Person> person(new Person(buf.str()));
 		n.addPerson(person);
 		AssertCondition((*person).getId() == i, "Id should be correct after adding person to SocialNetwork");
 	}
