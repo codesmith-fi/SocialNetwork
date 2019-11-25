@@ -499,10 +499,10 @@ void SocialNetworkTester::TestSocialNetworkManageFriendships()
 	AssertCondition(friendships.getFriends(0).size() == 5, "Person 0 should have 5 friends");
 	AssertCondition(friendships.getFriends(1).size() == 0, "Person 1 should have 0 friends");
 	AssertCondition(friendships.areFriends(0, 5), "Person 0 should be a friend with person 5");
-	AssertCondition(friendships.areFriends(0, 6), "Person 0 should be a friend with person 5");
-	AssertCondition(friendships.areFriends(0, 7), "Person 0 should be a friend with person 5");
-	AssertCondition(friendships.areFriends(0, 8), "Person 0 should be a friend with person 5");
-	AssertCondition(friendships.areFriends(0, 9), "Person 0 should be a friend with person 5");
+	AssertCondition(friendships.areFriends(0, 6), "Person 0 should be a friend with person 6");
+	AssertCondition(friendships.areFriends(0, 7), "Person 0 should be a friend with person 7");
+	AssertCondition(friendships.areFriends(0, 8), "Person 0 should be a friend with person 8");
+	AssertCondition(friendships.areFriends(0, 9), "Person 0 should be a friend with person 9");
 
 	LOG_INFO() << "TestSocialNetworkManageFriendships() exit";
 }
