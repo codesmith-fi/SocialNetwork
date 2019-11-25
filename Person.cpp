@@ -5,6 +5,9 @@ namespace codesmith
 
 bool Person::operator==(const Person& other)
 {
+	// Really naive implementation, checks only the name for equality
+	// Should be updated to check other properties if needed, left for
+	// "future expansion" :-)
 	return(m_name == other.m_name);
 }
 

@@ -14,9 +14,16 @@
 
 namespace codesmith {
 	
+	/**
+	* Class which encapsulates data and operations for a Person
+	* Person describes one entity in social network. Persons have
+	* friendship reations through Friendships class instance owned
+	* by the SocialNetwork class.
+	*/
 	class Person
 	{
 	public: // Class constants/Enums
+		// Gender enumeration
 		enum class PersonGender : int {
 			Male = 0,
 			Female,
@@ -64,12 +71,13 @@ namespace codesmith {
 		bool hasHobby(const Hobby & hobby);
 		bool hasAllHobbies(const std::vector<Hobby>& hobbies);
 		bool hasAllHobbies(const std::vector<std::string>& hobbyNames);
-
 		bool operator==(const Person& other);
 		void operator=(const Person& other);
+
 	private: // Operations
 		// Default constructor is private because Name is always required
 		Person() : Person("") { };
+
 		/**
 		* Get a iterator for a specific hobby
 		* @param hobby hobby to be fetched
