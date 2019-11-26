@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include "SocialNetworkTester.h"
 
@@ -14,5 +13,5 @@ int main(int /* argc */, char** /* argv */)
 	SocialNetworkTester::instance().RunAll();
 	cout << "Tests succeeded: " << SocialNetworkTester::instance().SuccessCount() << endl;
 	cout << "Tests failed: " << SocialNetworkTester::instance().FailCount() << endl;
-    return 0;
+	return 0;
 }

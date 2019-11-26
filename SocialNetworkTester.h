@@ -14,13 +14,12 @@
 #include "SocialNetwork.h"
 
 namespace codesmith {
-
-/**
- * Simple "unit" test for Storyboard project classes
- * This runner class is a singleton and contains operations to run tests cases
- * and get the success and failure counts after running
- */
-class SocialNetworkTester {
+	/**
+	 * Simple "unit" test for Storyboard project classes
+	 * This runner class is a singleton and contains operations to run tests cases
+	 * and get the success and failure counts after running
+	 */
+	class SocialNetworkTester {
 	public: // Singleton accessor
 		static SocialNetworkTester& instance() {
 			static SocialNetworkTester tester;
@@ -81,10 +80,7 @@ class SocialNetworkTester {
 		SocialNetwork m_network;
 		std::shared_ptr<Person> m_person1;
 		std::shared_ptr<Person> m_person2;
-};
-
-
+	};
 } /* namespace codesmith */
 
 #endif // SOCIALNETWORKTESTER_H_
-

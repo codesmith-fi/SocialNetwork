@@ -12,7 +12,7 @@
 #include <string>
 
 namespace codesmith {
-	class PersonNotFoundException: public std::exception
+	class PersonNotFoundException : public std::exception
 	{
 	public: // Methods
 		PersonNotFoundException(int id) : m_requestedId(id) { };
@@ -27,8 +27,7 @@ namespace codesmith {
 
 	private: // data
 		int m_requestedId;
-	}; 
-
+	};
 } // namespace codesmith
 
 #endif // PERSONNOTFOUNDEXCEPTION_H_

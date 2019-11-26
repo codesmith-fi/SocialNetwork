@@ -3,7 +3,6 @@
 #include "PersonNotFoundException.h"
 
 namespace codesmith {
-
 	void SocialNetwork::clear()
 	{
 		m_friendships.clear();
@@ -20,7 +19,7 @@ namespace codesmith {
 
 	void SocialNetwork::removePerson(int id)
 	{
-		std::vector<std::shared_ptr<Person>>::iterator it = 
+		std::vector<std::shared_ptr<Person>>::iterator it =
 			findPersonIterById(id);
 		if (it != m_people.end()) {
 			m_people.erase(it);
@@ -94,7 +93,7 @@ namespace codesmith {
 	bool SocialNetwork::hasPerson(int id)
 	{
 		bool res = false;
-		for(auto p : m_people) {
+		for (auto p : m_people) {
 			if ((*p).getId() == id) {
 				res = true;
 				break;
@@ -119,6 +118,4 @@ namespace codesmith {
 		}
 		return it;
 	}
-
-
 }

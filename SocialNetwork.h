@@ -15,7 +15,6 @@
 #include "Hobby.h"
 
 namespace codesmith {
-
 	class SocialNetwork
 	{
 	public: // Construction
@@ -102,7 +101,7 @@ namespace codesmith {
 
 	private:
 		std::vector<std::shared_ptr<Person>>::iterator findPersonIterById(int id);
-	
+
 	private: // Data
 		std::vector < std::shared_ptr<Person> > m_people;
 		Friendships m_friendships;
@@ -111,4 +110,3 @@ namespace codesmith {
 }
 
 #endif // SOCIALNETWORK_H_
-

@@ -8,7 +8,6 @@
 #include <string>
 
 namespace codesmith {
-
 	class Hobby
 	{
 	public: // Construction
@@ -28,4 +27,3 @@ namespace codesmith {
 }
 
 #endif PERSON_H_
-
