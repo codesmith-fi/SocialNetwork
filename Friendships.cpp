@@ -2,6 +2,17 @@
 
 namespace codesmith
 {
+	bool Friendships::FriendPair::operator==(const FriendPair& other)
+	{
+		return ((m_id1 == other.m_id1 && m_id2 == other.m_id2) ||
+			(m_id1 == other.m_id2 && m_id2 == other.m_id1));
+	}
+
+	bool Friendships::FriendPair::operator!=(const FriendPair& other)
+	{
+		return !(*this == other);
+	}
+
 	bool Friendships::areFriends(const Person& p1, const Person& p2) const
 	{
 		return areFriends(p1.getId(), p2.getId());
@@ -10,9 +21,9 @@ namespace codesmith
 	bool Friendships::areFriends(int p1_id, int p2_id) const
 	{
 		bool res = false;
+		FriendPair pair(p1_id, p2_id);
 		for (auto p : m_friendRelations) {
-			if ((p1_id == p.m_id1 && p2_id == p.m_id2) ||
-				(p1_id == p.m_id2 && p2_id == p.m_id1)) {
+			if (p == pair) {
 				res = true;
 				break;
 			}
@@ -60,7 +71,7 @@ namespace codesmith
 			m_friendRelations.erase(it);
 		}
 	}
-	
+
 	void Friendships::unfriend(const Person& p1, const Person& p2)
 	{
 		unfriend(p1.getId(), p2.getId());
@@ -76,5 +87,4 @@ namespace codesmith
 		}
 		return it;
 	}
-
 }

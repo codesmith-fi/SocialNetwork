@@ -12,7 +12,6 @@
 #include "Person.h"
 
 namespace codesmith {
-
 	/**
 	* A class to hold friend relations between two Persons
 	* Only Ids of persons are kept here
@@ -24,6 +23,8 @@ namespace codesmith {
 		{
 		public:
 			FriendPair(int id1, int id2) : m_id1(id1), m_id2(id2) { };
+			bool operator==(const FriendPair& other);
+			bool operator!=(const FriendPair& other);
 			int m_id1;
 			int m_id2;
 		};
